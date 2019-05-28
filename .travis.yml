@@ -35,7 +35,7 @@ script:
   #- ./mvnw  verify
   - ./mvnw clean verify install -B
   #- sonar-scanner
-  - ./mvnw sonar:sonar   -Dsonar.projectKey=maxiplux_b2bcar   -Dsonar.organization=maxiplux-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=8afa59b3e8a7527d85f40c448439296d98e7945c
+  - mvn sonar:sonar   -Dsonar.projectKey=maxiplux_b2bcar   -Dsonar.organization=maxiplux-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=8afa59b3e8a7527d85f40c448439296d98e7945c
 
 #mvn sonar:sonar   -Dsonar.projectKey=maxiplux_apipostgress   -Dsonar.organization=maxiplux-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=b7cc5e383086fedd5b328a68e293a7c28d5bce1e
 
