@@ -27,9 +27,9 @@ before_install:
 
 deploy:
   provider: heroku
-  secure: "lBORHQOJTqYOu0Bi+FEDZhGCvy/doImDrm0WRr+OXsR1YnTJUBbSjU2ZBqTSXfN0wRqblHR3cN3kheWYjm8iHvyk15btl27P/0t5kg7YqXWx2EUHRFhwuKmOAClOItA6yqZfJiLVgRoxXSuSxrbQAidaFMwbEtly/NPmP2aiIR2F1hd+Kle3JsrlrE5pesFGC01ZkOi6cyW19CgT/YLpVaH4z1JXKlSpc/0s4vAh5JhvnSvj7B9s/kL7BMOcmV/Ox0Wc3RzWmpgYuUr8Loeb8Q5XbF9g3VYxY8q9TXdd5C3UqRmhqY7RtS21oBMVfn6K6WAgZ/c6BG/YpHgvVv9qEyw4K5eoGm7FhUe/3A+W+F34H/GWlFixkaOLEKGyTvjQ2W2sZh9rrK3LMT3Y1/dzoWwn5eehDDFXyp1OZ3NHRYhYW6UgokMF5KXqAgs/yYX+K8pJBzE1o/yPzR0uovyEliwn6heKdwLMTSkkBB2XuSbgkyNdd2WbG1QYSfX4xzamLN9uixJL9E5n3yXD0WrWH88SyWtqOldAN+VGv6FQy1G1vN0ejgxndTeRk9568L7NzaVYxcN4kWmo0jskya9hJOZC0plW63iwK3F4BTU/Wo1rvvgOYCMc6DwjmRt10z1m++whiiA5E2OKmAF8usATNWEmhGO+8agelVD5f66UxJ4="
+  api_key: $HEROKU_API_KEY
   app: b2bcar
-  #travis encrypt HEROKU_API_KEY
+  #travis encrypt HEROKU_API_KEY="d20b2f79-00a-26aa35b881ae"
 script:
   #- ./mvnv verify -B
   #- ./mvnw  verify
