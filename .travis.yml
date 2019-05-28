@@ -9,6 +9,7 @@ services:
 
 
 
+
 addons:
   sonarcloud:
     organization: "maxiplux-github" # the key of the org you chose at step #3
