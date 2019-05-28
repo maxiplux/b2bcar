@@ -24,11 +24,7 @@ addons:
 before_install:
   - chmod a+x ./mvnw
 
-deploy:
-  provider: heroku
-  api_key:
-    secure: $HEROKU_API_KEY
-  app: b2bcar
+
 
 script:
   #- ./mvnv verify -B
