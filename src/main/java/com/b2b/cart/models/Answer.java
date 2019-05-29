@@ -2,6 +2,7 @@ package com.b2b.cart.models;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "answers")
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 public class Answer extends AuditModel {
     @Id
