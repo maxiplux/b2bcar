@@ -26,10 +26,4 @@ public class Answer extends AuditModel {
     private String text;
 
 
-
-
-
-
-
-
 }

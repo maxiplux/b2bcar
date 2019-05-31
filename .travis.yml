@@ -19,7 +19,7 @@ addons:
   hosts:
     - postgres
       #apt:
-      #packages:
+    #packages:
     #- oracle-java11-installer
 before_install:
   - chmod a+x ./mvnw

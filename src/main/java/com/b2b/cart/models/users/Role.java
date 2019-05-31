@@ -22,5 +22,6 @@ public class Role extends AuditModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true, length = 20)
-    private String nombre;
+    private String name;
+
 }

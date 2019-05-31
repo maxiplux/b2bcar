@@ -2,7 +2,7 @@ package com.b2b.cart.models.invoices;
 
 import com.b2b.cart.models.AuditModel;
 import com.b2b.cart.models.items.Item;
-import com.b2b.cart.models.users.Usuario;
+import com.b2b.cart.models.users.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,12 +23,12 @@ public class Invoice extends AuditModel {
     private Long id;
     private String description;
     private String comments;
-    @JsonIgnoreProperties(value = {"facturas", "hibernateLazyInitializer", "handler"}, allowSetters = true)
+    @JsonIgnoreProperties(value = {"invoices", "hibernateLazyInitializer", "handler"}, allowSetters = true)
     @ManyToOne(fetch = FetchType.LAZY)
-    private Usuario customer;
+    private User customer;
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "factura_id")
+    @JoinColumn(name = "invoice_id")
     private List<Item> items;
 
     public Double getTotal() {
