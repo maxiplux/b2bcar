@@ -2,6 +2,7 @@ package com.b2b.cart.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -36,6 +37,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         security.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()");
     }
+
+    @Value("${auth2.username}")
+    private String clientEncodeValue;
+
+    @Value("${auth2.password}")
+    private String passwordEncodeValue;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {

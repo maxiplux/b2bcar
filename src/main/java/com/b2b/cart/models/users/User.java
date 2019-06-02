@@ -29,7 +29,7 @@ public class User extends AuditModel {
     @Column(length = 60)
     private String password;
     private Boolean enabled;
-    private String fartsName;
+    private String firstName;
     private String lastName;
     @Column(unique = true)
     private String email;
