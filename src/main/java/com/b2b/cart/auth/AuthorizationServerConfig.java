@@ -38,10 +38,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .checkTokenAccess("isAuthenticated()");
     }
 
-    @Value("${auth2.username}")
+    @Value("security.withclient")
     private String clientEncodeValue;
 
-    @Value("${auth2.password}")
+    @Value("${security.withclient}")
     private String passwordEncodeValue;
 
     @Override

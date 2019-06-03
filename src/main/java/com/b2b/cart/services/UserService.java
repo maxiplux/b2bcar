@@ -52,4 +52,20 @@ public class UserService implements IUserService, UserDetailsService {
         return userDao.findByUsername(username);
     }
 
+    @Override
+    public boolean existsByEmail(String username) {
+        return this.userDao.existsByEmail(username);
+    }
+
+
+    @Override
+    public Boolean existsByUsername(String username) {
+        return this.userDao.existsByUsername(username);
+    }
+
+    @Override
+    public User save(User user) {
+        return this.userDao.save(user);
+    }
+
 }
