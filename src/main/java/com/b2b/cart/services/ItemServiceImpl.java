@@ -2,7 +2,7 @@ package com.b2b.cart.services;
 
 
 import com.b2b.cart.models.items.Item;
-import com.b2b.cart.repository.ItemDao;
+import com.b2b.cart.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class ItemServiceImpl implements ItemService {
     @Autowired
-    private ItemDao productRepository;
+    private ItemRepository productRepository;
 
     @Override
     public Page<Item> findAll(Pageable pageable) {
@@ -33,6 +33,16 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Optional<Item> updateProductById(long id, Item product) {
+
+        int resultDummyOperation = this.suma(id, id * 2);
+
+        if (resultDummyOperation == 9) {
+            System.out.println("Operation only to understand PowerMockito");
+        } else {
+            System.out.println("!!!!!  Code Coverage : Operation only to understand PowerMockito");
+
+        }
+
         Optional<Item> optionalCurrentProduct = this.productRepository.findById(id);
         if (optionalCurrentProduct.isPresent()) {
             Item currentProduct = optionalCurrentProduct.get();
@@ -50,6 +60,10 @@ public class ItemServiceImpl implements ItemService {
         return Optional.empty();
 
 
+    }
+
+    private int suma(Long id, Long l) {
+        return (int) (id + l);
     }
 
 

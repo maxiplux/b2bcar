@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Repository
-public interface ItemDao extends PagingAndSortingRepository<Item, Long> {
+public interface ItemRepository extends PagingAndSortingRepository<Item, Long> {
 
 
     @Query("select p from Item p where p.name like %?1%")
