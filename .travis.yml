@@ -18,7 +18,7 @@ addons:
 
   hosts:
     - postgres
-      #apt:
+    #apt:
     #packages:
     #- oracle-java11-installer
 before_install:

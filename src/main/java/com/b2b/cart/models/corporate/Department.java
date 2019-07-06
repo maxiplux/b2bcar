@@ -13,13 +13,17 @@ import javax.validation.constraints.NotBlank;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @Document
-public class Holding extends AuditModel {
+public class Department extends AuditModel {
 
     @Id
-    private String id;
+    private String deparmentId;
+
+    private long seq;
 
     @NotBlank
     private String name;
 
-    private long seq;
+    @NotBlank
+    private Company company;
+
 }

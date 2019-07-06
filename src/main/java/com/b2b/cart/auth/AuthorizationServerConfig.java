@@ -31,18 +31,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Autowired
     private InfoAdicionalToken infoAdicionalToken;
+    @Value("security.withclient")
+    private String clientEncodeValue;
+    @Value("${security.withclient}")
+    private String passwordEncodeValue;
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()");
     }
-
-    @Value("security.withclient")
-    private String clientEncodeValue;
-
-    @Value("${security.withclient}")
-    private String passwordEncodeValue;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {

@@ -1,7 +1,7 @@
 package com.b2b.cart.services;
 
 import com.b2b.cart.models.users.User;
-import com.b2b.cart.repository.UserDao;
+import com.b2b.cart.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +23,14 @@ public class UserService implements IUserService, UserDetailsService {
     private Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
-    private UserDao userDao;
+    private UserRepository userRepository;
 
 
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User usuario = userDao.findByUsername(username);
+        User usuario = userRepository.findByUsername(username);
 
         if (usuario == null) {
             logger.error("Error en el login: no existe el usuario '" + username + "' en el sistema!");
@@ -49,23 +49,23 @@ public class UserService implements IUserService, UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public User findByUsername(String username) {
-        return userDao.findByUsername(username);
+        return userRepository.findByUsername(username);
     }
 
     @Override
     public boolean existsByEmail(String username) {
-        return this.userDao.existsByEmail(username);
+        return this.userRepository.existsByEmail(username);
     }
 
 
     @Override
     public Boolean existsByUsername(String username) {
-        return this.userDao.existsByUsername(username);
+        return this.userRepository.existsByUsername(username);
     }
 
     @Override
     public User save(User user) {
-        return this.userDao.save(user);
+        return this.userRepository.save(user);
     }
 
 }

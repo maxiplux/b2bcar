@@ -5,11 +5,9 @@ import com.b2b.cart.models.generic.Address;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -18,13 +16,15 @@ import javax.validation.constraints.Pattern;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-@Entity
+@Document(collection = "companies")
 public class Company extends AuditModel {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String companyId;
+
+    private long seq;
+
 
     @NotBlank
     private String name;
