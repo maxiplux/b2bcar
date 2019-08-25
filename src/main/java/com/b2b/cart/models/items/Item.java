@@ -29,13 +29,7 @@ public class Item extends AuditModel {
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
-    @JsonIgnoreProperties(value = {"types", "hibernateLazyInitializer", "handler"}, allowSetters = true)
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Type type;
 
-    @JsonIgnoreProperties(value = {"conditions", "hibernateLazyInitializer", "handler"}, allowSetters = true)
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Condition condition;
 
     @NotBlank
     @Min(value = 0)

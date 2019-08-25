@@ -1,8 +1,6 @@
 package com.b2b.cart.models.users;
 
 import com.b2b.cart.models.AuditModel;
-import com.b2b.cart.models.invoices.Invoice;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -26,11 +24,19 @@ public class User extends AuditModel {
     private Long id;
     //@Column(unique = true, length = 20)
     private String username;
+
     @Column(length = 60)
     private String password;
+
     private Boolean enabled;
     private String firstName;
     private String lastName;
+
+    @Column(name = "reset_token")
+    private String resetToken;
+
+
+
     @Column(unique = true)
     private String email;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -39,8 +45,6 @@ public class User extends AuditModel {
             , uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role_id"})}
     )
     private List<Role> roles;
-    @JsonIgnoreProperties(value = {"customer", "hibernateLazyInitializer", "handler"}, allowSetters = true)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Invoice> invoices;
+
 
 }

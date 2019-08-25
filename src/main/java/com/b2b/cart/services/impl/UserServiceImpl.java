@@ -1,7 +1,8 @@
-package com.b2b.cart.services;
+package com.b2b.cart.services.impl;
 
 import com.b2b.cart.models.users.User;
 import com.b2b.cart.repository.UserRepository;
+import com.b2b.cart.services.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class UserService implements IUserService, UserDetailsService {
+public class UserServiceImpl implements IUserService, UserDetailsService {
 
-    private Logger logger = LoggerFactory.getLogger(UserService.class);
+    private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserRepository userRepository;

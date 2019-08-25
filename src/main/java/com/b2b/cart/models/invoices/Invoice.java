@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -28,16 +29,16 @@ public class Invoice extends AuditModel {
     @ManyToOne(fetch = FetchType.LAZY)
     private User customer;
 
+
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "invoice_id")
-    private List<Item> items;
+    private Set<ItemsInvoices> items;
 
-    public Double getTotal() {
-        Double total = 0.00;
-        for (Item item : items) {
-            total += item.getPriceWithTaxes();
-        }
-        return total;
+    public void add(List<ItemsInvoices> items) {
+        this.items.addAll(items);
+    }
+    public void add(ItemsInvoices item) {
+        this.items.add(item);
     }
 }

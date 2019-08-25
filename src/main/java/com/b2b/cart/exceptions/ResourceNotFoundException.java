@@ -1,5 +1,4 @@
-package com.domain.apipostgress.exceptions;
-
+package com.b2b.cart.exceptions;
 /**
  * User: franc
  * Date: 09/09/2018

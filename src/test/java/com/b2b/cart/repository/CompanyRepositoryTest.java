@@ -73,12 +73,12 @@ public class CompanyRepositoryTest {
 
 
         Company pojo = factory.nextObject(Company.class);
-        pojo.setCompanyId(null);
+        pojo.setId(null);
         pojo = this.companyRepository.save(pojo);
 
-        String iD = pojo.getCompanyId();
+        Long iD = pojo.getId();
         this.companyRepository.delete(pojo);
-        Assert.assertFalse(this.companyRepository.findByCompanyId(iD).isPresent());
+        Assert.assertFalse(this.companyRepository.findById(iD).isPresent());
 
     }
 
@@ -86,12 +86,12 @@ public class CompanyRepositoryTest {
     @Test
     public void testSave() {
         Company pojo = factory.nextObject(Company.class);
-        pojo.setCompanyId(null);
+        pojo.setId(null);
         pojo.setSeq(0);
         Company dbPojo = this.companyRepository.save(pojo);
         System.out.println(pojo);
 
-        Assert.assertNotNull(dbPojo.getCompanyId());
+        Assert.assertNotNull(dbPojo.getId());
     }
 
 

@@ -2,6 +2,7 @@ package com.b2b.cart.services;
 
 import com.b2b.cart.models.items.Item;
 import com.b2b.cart.repository.ItemRepository;
+import com.b2b.cart.services.impl.ItemServiceImpl;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.After;

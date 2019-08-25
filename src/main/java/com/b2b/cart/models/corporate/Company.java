@@ -2,12 +2,15 @@ package com.b2b.cart.models.corporate;
 
 import com.b2b.cart.models.AuditModel;
 import com.b2b.cart.models.generic.Address;
+import com.b2b.cart.models.users.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -16,12 +19,13 @@ import javax.validation.constraints.Pattern;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-@Document(collection = "companies")
+@Entity
 public class Company extends AuditModel {
 
 
     @Id
-    private String companyId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private long seq;
 
@@ -46,5 +50,8 @@ public class Company extends AuditModel {
     private Address secondaryAddress;
 
     private String extraData;
+
+    @NotBlank
+    private User manager;
 
 }

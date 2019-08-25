@@ -11,13 +11,19 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Optional;
 
+
 @RestController
+@Secured({
+        "ROLE_ADMIN",
+        "ROLE_USER"
+})
 @RequestMapping("/api/v1/products")
 public class ProductController {
 //https://phoenixnap.com/kb/spring-boot-validation-for-rest-services
@@ -26,6 +32,10 @@ public class ProductController {
     @Autowired
     private ItemService service;
 
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "Authorization ", required = true, dataType = "string", paramType = "header", defaultValue = "Bearer ")
+    })
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<?> queryByPage(Pageable pageable) {
         //https://dzone.com/articles/conditional-pagination-and-sorting-using-restful-w

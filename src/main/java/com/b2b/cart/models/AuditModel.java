@@ -15,6 +15,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @MappedSuperclass
@@ -26,15 +28,14 @@ import java.util.Date;
 )
 @Data
 public abstract class AuditModel implements Serializable {
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = true, updatable = true)
     @CreatedDate
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at", nullable = false)
+
+    @Column(name = "updated_at", nullable = true)
     @LastModifiedDate
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     // Getters and Setters (Omitted for brevity)
 
@@ -42,20 +43,32 @@ public abstract class AuditModel implements Serializable {
     public AuditModel() {
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+        if (this.createdAt == null)
+        {
+            this.createdAt = LocalDateTime.now();
+
+        }
+
     }
 
-    public Date getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+        if (updatedAt == null)
+        {
+            this.updatedAt = LocalDateTime.now();
+
+        }
+
     }
 
 

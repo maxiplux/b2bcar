@@ -1,8 +1,9 @@
-package com.b2b.cart.services;
+package com.b2b.cart.services.impl;
 
 
 import com.b2b.cart.models.items.Item;
 import com.b2b.cart.repository.ItemRepository;
+import com.b2b.cart.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Page<Item> findAll(Pageable pageable) {
+
         return productRepository.findAll(pageable);
     }
 
@@ -32,7 +34,7 @@ public class ItemServiceImpl implements ItemService {
 
 
     @Override
-    public Optional<Item> updateProductById(long id, Item product) {
+    public Optional<Item> updateProductById(long id, Item item) {
 
         int resultDummyOperation = this.suma(id, id * 2);
 
@@ -45,17 +47,32 @@ public class ItemServiceImpl implements ItemService {
 
         Optional<Item> optionalCurrentProduct = this.productRepository.findById(id);
         if (optionalCurrentProduct.isPresent()) {
-            Item currentProduct = optionalCurrentProduct.get();
+            Item currentItem = optionalCurrentProduct.get();
 
-            if (product.getName() != null) {
-                currentProduct.setName(product.getName());
+            if (item.getName() != null) {
+                currentItem.setName(item.getName());
             }
 
-            if (product.getPrice() != null) {
-                currentProduct.setPrice(product.getPrice());
+            if (item.getPrice() != null) {
+                currentItem.setPrice(item.getPrice());
             }
 
-            return Optional.of(this.productRepository.save(currentProduct));
+            if (item.getCategory() != null) {
+                currentItem.setCategory(item.getCategory());
+            }
+
+
+
+            if (item.getPicture() != null) {
+                currentItem.setPicture(item.getPicture());
+            }
+
+            if (item.getQuality() != null) {
+                currentItem.setQuality(item.getQuality());
+            }
+
+
+            return Optional.of(this.productRepository.save(currentItem));
         }
         return Optional.empty();
 
