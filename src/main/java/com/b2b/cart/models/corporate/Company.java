@@ -13,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 
 @Data
@@ -33,25 +32,25 @@ public class Company extends AuditModel {
     @NotBlank
     private String name;
 
-    @NotBlank
+
     private Holding holding;
 
     @Email
     private String email;
 
 
-    @NotBlank
+    //@NotBlank
     private Address primaryAddress;
 
     @NotBlank
-    @Pattern(regexp = "(^$|[0-9]{10})")
+
     private String primaryPhone;
 
     private Address secondaryAddress;
 
     private String extraData;
 
-    @NotBlank
+
     private User manager;
 
 }

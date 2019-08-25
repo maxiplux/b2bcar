@@ -2,6 +2,9 @@ package com.b2b.cart.repository;
 
 import com.b2b.cart.CartApplication;
 import com.b2b.cart.models.corporate.Company;
+import com.b2b.cart.models.corporate.Holding;
+import com.b2b.cart.models.generic.Address;
+import com.b2b.cart.models.users.User;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.After;
@@ -13,12 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import static java.nio.charset.Charset.forName;
 
 
 @RunWith(SpringRunner.class)
@@ -27,6 +29,8 @@ public class CompanyRepositoryTest {
 
     @Autowired
     private CompanyRepository companyRepository;
+    @Autowired
+    private UserRepository userRepository;
     private EasyRandom factory;
 
     @Test
@@ -34,30 +38,51 @@ public class CompanyRepositoryTest {
         Assert.assertNotNull(companyRepository);
     }
 
+    private User user;
+
     @Test
     public void testFindAll() {
+        Holding holding = factory.nextObject(Holding.class);
+        holding.setMananger(user);
+        Address address = factory.nextObject(Address.class);
 
-        List<Company> carts = IntStream.range(1, 10).mapToObj(e ->
+        List<Company> companies = IntStream.range(1, 10).mapToObj(e ->
 
 
-                this.companyRepository.save(factory.nextObject(Company.class))
+                {
+                    Company company = factory.nextObject(Company.class);
+                    company.setManager(user);
+                    company.setHolding(holding);
+                    company.setPrimaryPhone("16414517283");
+                    company.setEmail("maxiplux@gmail.com");
+                    company.setPrimaryAddress(address);
+                    return company;
+                }
 
 
+        ).map(el ->
+                {
+                    int k = 9;
+                    return this.companyRepository.save(el);
+                }
         ).collect(Collectors.toList());
 
 
-        Assert.assertEquals(carts.size(), ((Collection<?>) this.companyRepository.findAll()).size());
+        Assert.assertEquals(companies.size(), ((Collection<?>) this.companyRepository.findAll()).size());
 
 
     }
 
     @Before
     public void setUp() throws Exception {
+        this.userRepository.findAll().forEach(user1 -> {
+            this.user = user1;
+        });
         EasyRandomParameters parameters = new EasyRandomParameters()
                 .seed(123L)
                 .objectPoolSize(100)
                 .randomizationDepth(3)
-                .charset(forName("UTF-8"))
+                .charset(StandardCharsets.UTF_8)
                 .stringLengthRange(5, 50)
                 .collectionSizeRange(1, 10)
                 .scanClasspathForConcreteTypes(true)
@@ -66,18 +91,26 @@ public class CompanyRepositoryTest {
         factory = new EasyRandom(parameters);
 
 
+
     }
 
     @Test
     public void testDelete() {
 
 
-        Company pojo = factory.nextObject(Company.class);
-        pojo.setId(null);
-        pojo = this.companyRepository.save(pojo);
+        Company company = factory.nextObject(Company.class);
+        company.setId(null);
 
-        Long iD = pojo.getId();
-        this.companyRepository.delete(pojo);
+
+        company.setEmail("maxiplux@gmail.com");
+        company.setPrimaryPhone("16414517283");
+        company.setManager(user);
+        company.setSeq(0);
+
+        company = this.companyRepository.save(company);
+
+        Long iD = company.getId();
+        this.companyRepository.delete(company);
         Assert.assertFalse(this.companyRepository.findById(iD).isPresent());
 
     }
@@ -85,11 +118,14 @@ public class CompanyRepositoryTest {
 
     @Test
     public void testSave() {
-        Company pojo = factory.nextObject(Company.class);
-        pojo.setId(null);
-        pojo.setSeq(0);
-        Company dbPojo = this.companyRepository.save(pojo);
-        System.out.println(pojo);
+        Company company = factory.nextObject(Company.class);
+        company.setId(null);
+        company.setEmail("maxiplux@gmail.com");
+        company.setPrimaryPhone("16414517283");
+        company.setManager(user);
+        company.setSeq(0);
+        Company dbPojo = this.companyRepository.save(company);
+        System.out.println(company);
 
         Assert.assertNotNull(dbPojo.getId());
     }
