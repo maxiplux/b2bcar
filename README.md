@@ -1,0 +1,2 @@
+# b2bcar
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/91393abb289b48909029e954ecb8ae8d)](https://app.codacy.com/app/maxiplux/b2bcar?utm_source=github.com&utm_medium=referral&utm_content=maxiplux/b2bcar&utm_campaign=Badge_Grade_Dashboard)
