@@ -5,6 +5,7 @@ jdk: openjdk11
 
 services:
   - postgresql
+  - mongodb
 
 
 
