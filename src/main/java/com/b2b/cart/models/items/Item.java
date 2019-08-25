@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import java.math.BigDecimal;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -31,9 +30,9 @@ public class Item extends AuditModel {
 
 
 
-    @NotBlank
+
     @Min(value = 0)
-    private BigDecimal quality;
+    private Double quality;
 
     @Min(value = 1)
     private Double price;

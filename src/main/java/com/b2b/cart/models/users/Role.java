@@ -24,4 +24,7 @@ public class Role extends AuditModel {
     @Column(unique = true, length = 20)
     private String name;
 
+    public Role(RoleName roleAdmin) {
+        this.name = roleAdmin.name();
+    }
 }
