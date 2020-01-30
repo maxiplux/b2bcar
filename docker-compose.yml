@@ -13,6 +13,7 @@ services:
   #    depends_on:
   #    - postgres
 
+
   postgres:
     image: postgres
     container_name: postgres
@@ -21,11 +22,17 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
-
-
+  b2bcart-redis:
+    image: redis:5.0.7
+    ports:
+      - '6379:6379'
+  b2bcart-sonar:
+    image: sonarqube:7.9.1-community
+    ports:
+      - 9001:9000
+      - 9092:9092
   mongo:
     image: mongo
-    restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: mongo

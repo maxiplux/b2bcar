@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+
+    elasticsearch:
+        build: loggin/elasticsearch/
+        container_name: elasticsearch
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        environment:
+            ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+
+    logstash:
+        build: loggin/logstash/
+        container_name: logstash
+        command: -f /etc/logstash/conf.d/
+        volumes:
+            - ./loggin/logstash/config:/etc/logstash/conf.d
+        ports:
+            - "9999:9999"
+        links:
+            - elasticsearch
+
+    kibana:
+        build: loggin/kibana/
+        container_name: kibana
+        volumes:
+            - ./loggin/kibana/config/:/opt/kibana/config/
+        ports:
+            - "5601:5601"
+        links:
+            - elasticsearch
