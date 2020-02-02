@@ -12232,3 +12232,670 @@ Caused by: com.mongodb.MongoCommandException: Command failed with error 18 (Auth
 	at org.springframework.data.mongodb.core.MongoTemplate$2.doInDB(MongoTemplate.java:435) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
 	at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:518) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
 	... 36 more
+logdate=(2020-02-01T20:49:21,556) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table invoice drop constraint FKa3yvl1brgwhdutn120fkdiyaa)
+logdate=(2020-02-01T20:49:21,588) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table item drop constraint FK2n9w8d0dp4bsfra9dcg0046l4)
+logdate=(2020-02-01T20:49:21,593) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices drop constraint FK9qorudwphu6pllhd3nexfxhb0)
+logdate=(2020-02-01T20:49:21,597) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices drop constraint FKg1hesefdb717jo6ena1wxuaab)
+logdate=(2020-02-01T20:49:21,600) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state drop constraint FK4sha6q25nqd3pt913d1u065hb)
+logdate=(2020-02-01T20:49:21,604) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states drop constraint FK90tcsxt8a6428rp30wc7pn21q)
+logdate=(2020-02-01T20:49:21,607) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states drop constraint FKq7vi52iwkygiqh6omubl3legu)
+logdate=(2020-02-01T20:49:21,611) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles drop constraint FKh8ciramu9cc9q3qcqiv4ue8a6)
+logdate=(2020-02-01T20:49:21,616) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles drop constraint FKhfh9dx7w3ubf1co1vdev94g3f)
+logdate=(2020-02-01T20:49:21,620) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists category cascade)
+logdate=(2020-02-01T20:49:21,626) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists company cascade)
+logdate=(2020-02-01T20:49:21,631) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists department cascade)
+logdate=(2020-02-01T20:49:21,636) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists holding cascade)
+logdate=(2020-02-01T20:49:21,640) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists invoice cascade)
+logdate=(2020-02-01T20:49:21,645) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists item cascade)
+logdate=(2020-02-01T20:49:21,651) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists items_invoices cascade)
+logdate=(2020-02-01T20:49:21,656) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists roles cascade)
+logdate=(2020-02-01T20:49:21,660) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists state cascade)
+logdate=(2020-02-01T20:49:21,665) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists state_next_states cascade)
+logdate=(2020-02-01T20:49:21,669) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists user_roles cascade)
+logdate=(2020-02-01T20:49:21,673) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists users cascade)
+logdate=(2020-02-01T20:49:21,682) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table category (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(255), sub_category bytea, primary key (id)))
+logdate=(2020-02-01T20:49:21,694) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table company (id  bigserial not null, created_at timestamp, updated_at timestamp, email varchar(255), extra_data varchar(255), holding bytea, manager bytea, name varchar(255), primary_address bytea, primary_phone varchar(255), secondary_address bytea, seq int8 not null, primary key (id)))
+logdate=(2020-02-01T20:49:21,705) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table department (id  bigserial not null, created_at timestamp, updated_at timestamp, company bytea, mananger bytea, name varchar(255), seq int8 not null, primary key (id)))
+logdate=(2020-02-01T20:49:21,716) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table holding (id  bigserial not null, created_at timestamp, updated_at timestamp, mananger bytea, name varchar(255), seq int8 not null, primary key (id)))
+logdate=(2020-02-01T20:49:21,727) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table invoice (id  bigserial not null, created_at timestamp, updated_at timestamp, comments varchar(255), description varchar(255), customer_id int8, primary key (id)))
+logdate=(2020-02-01T20:49:21,739) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table item (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(255), picture varchar(255), price float8 check (price>=1), quality float8 check (quality>=0), category_id int8, primary key (id)))
+logdate=(2020-02-01T20:49:21,751) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table items_invoices (id  bigserial not null, created_at timestamp, updated_at timestamp, price float8, tax float8, invoice_id int8, item_id int8, primary key (id)))
+logdate=(2020-02-01T20:49:21,759) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table roles (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(20), primary key (id)))
+logdate=(2020-02-01T20:49:21,767) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table state (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(255), send_emil_to_admin boolean, send_emil_to_client boolean, send_emil_to_client_user boolean, send_emil_to_staff boolean, sequence int4, current_state_id int8, primary key (id)))
+logdate=(2020-02-01T20:49:21,775) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table state_next_states (state_id int8 not null, next_states_id int8 not null, primary key (state_id, next_states_id)))
+logdate=(2020-02-01T20:49:21,784) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table user_roles (user_id int8 not null, role_id int8 not null))
+logdate=(2020-02-01T20:49:21,787) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table users (id  bigserial not null, created_at timestamp, updated_at timestamp, email varchar(255), enabled boolean, first_name varchar(255), last_name varchar(255), password varchar(60), reset_token varchar(255), username varchar(255), primary key (id)))
+logdate=(2020-02-01T20:49:21,798) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table category add constraint UK_46ccwnsi9409t36lurvtyljak unique (name))
+logdate=(2020-02-01T20:49:21,804) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table roles add constraint UK_ofx66keruapi6vyqpv6f2or37 unique (name))
+logdate=(2020-02-01T20:49:21,811) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states add constraint UK_n60xp5q9s5d44dfmt6ussv86n unique (next_states_id))
+logdate=(2020-02-01T20:49:21,817) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles add constraint UKa9dydk3dj4qb8cvmjijqnrg5t unique (user_id, role_id))
+logdate=(2020-02-01T20:49:21,830) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email))
+logdate=(2020-02-01T20:49:21,837) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table invoice add constraint FKa3yvl1brgwhdutn120fkdiyaa foreign key (customer_id) references users)
+logdate=(2020-02-01T20:49:21,843) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table item add constraint FK2n9w8d0dp4bsfra9dcg0046l4 foreign key (category_id) references category)
+logdate=(2020-02-01T20:49:21,848) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices add constraint FK9qorudwphu6pllhd3nexfxhb0 foreign key (invoice_id) references invoice)
+logdate=(2020-02-01T20:49:21,852) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices add constraint FKg1hesefdb717jo6ena1wxuaab foreign key (item_id) references item)
+logdate=(2020-02-01T20:49:21,855) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state add constraint FK4sha6q25nqd3pt913d1u065hb foreign key (current_state_id) references state)
+logdate=(2020-02-01T20:49:21,859) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states add constraint FK90tcsxt8a6428rp30wc7pn21q foreign key (next_states_id) references state)
+logdate=(2020-02-01T20:49:21,863) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states add constraint FKq7vi52iwkygiqh6omubl3legu foreign key (state_id) references state)
+logdate=(2020-02-01T20:49:21,866) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles)
+logdate=(2020-02-01T20:49:21,870) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users)
+logdate=(2020-02-01T20:49:23,250) thread=(main)) level=(WARN) loggerclass=(org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration)
+            message=(spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning)
+logdate=(2020-02-01T20:49:25,597) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into roles (created_at, updated_at, name) values (?, ?, ?))
+logdate=(2020-02-01T20:49:25,613) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into roles (created_at, updated_at, name) values (?, ?, ?))
+logdate=(2020-02-01T20:49:25,726) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select role0_.id as id1_7_, role0_.created_at as created_2_7_, role0_.updated_at as updated_3_7_, role0_.name as name4_7_ from roles role0_)
+logdate=(2020-02-01T20:49:25,744) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into users (created_at, updated_at, email, enabled, first_name, last_name, password, reset_token, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,764) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into category (created_at, updated_at, name, sub_category) values (?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,781) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T20:49:25,789) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,792) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T20:49:25,795) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,797) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T20:49:25,800) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,804) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T20:49:25,807) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,810) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T20:49:25,813) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,817) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T20:49:25,820) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,824) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T20:49:25,827) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,831) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T20:49:25,834) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,837) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T20:49:25,840) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,850) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into state (created_at, updated_at, current_state_id, name, send_emil_to_admin, send_emil_to_client, send_emil_to_client_user, send_emil_to_staff, sequence) values (?, ?, ?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,854) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into state (created_at, updated_at, current_state_id, name, send_emil_to_admin, send_emil_to_client, send_emil_to_client_user, send_emil_to_staff, sequence) values (?, ?, ?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T20:49:25,865) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into user_roles (user_id, role_id) values (?, ?))
+logdate=(2020-02-01T20:49:25,868) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into user_roles (user_id, role_id) values (?, ?))
+logdate=(2020-02-01T20:49:25,870) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into state_next_states (state_id, next_states_id) values (?, ?))
+logdate=(2020-02-01T20:49:26,522) thread=(RMI TCP Connection(3)-169.254.195.124)) level=(WARN) loggerclass=(org.springframework.boot.actuate.mongo.MongoHealthIndicator)
+            message=(MongoDB health check failed)
+org.springframework.data.mongodb.UncategorizedMongoDbException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='mongo', source='admin', password=<hidden>, mechanismProperties={}}; nested exception is com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='mongo', source='admin', password=<hidden>, mechanismProperties={}}
+	at org.springframework.data.mongodb.core.MongoExceptionTranslator.translateExceptionIfPossible(MongoExceptionTranslator.java:138) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate.potentiallyConvertRuntimeException(MongoTemplate.java:2781) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:520) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate.executeCommand(MongoTemplate.java:435) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.boot.actuate.mongo.MongoHealthIndicator.doHealthCheck(MongoHealthIndicator.java:46) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.health.AbstractHealthIndicator.health(AbstractHealthIndicator.java:84) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.health.CompositeHealthIndicator.health(CompositeHealthIndicator.java:98) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpoint.health(HealthEndpoint.java:50) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:567) ~[?:?]
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282) ~[spring-core-5.1.6.RELEASE.jar:5.1.6.RELEASE]
+	at org.springframework.boot.actuate.endpoint.invoke.reflect.ReflectiveOperationInvoker.invoke(ReflectiveOperationInvoker.java:76) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.endpoint.annotation.AbstractDiscoveredOperation.invoke(AbstractDiscoveredOperation.java:61) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.endpoint.jmx.EndpointMBean.invoke(EndpointMBean.java:126) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.endpoint.jmx.EndpointMBean.invoke(EndpointMBean.java:99) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809) ~[?:?]
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801) ~[?:?]
+	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1466) ~[?:?]
+	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1307) ~[?:?]
+	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1399) ~[?:?]
+	at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:827) ~[?:?]
+	at jdk.internal.reflect.GeneratedMethodAccessor103.invoke(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:567) ~[?:?]
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359) ~[?:?]
+	at sun.rmi.transport.Transport$1.run(Transport.java:200) ~[?:?]
+	at sun.rmi.transport.Transport$1.run(Transport.java:197) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:689) [?:?]
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:196) ~[?:?]
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562) ~[?:?]
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796) ~[?:?]
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:389) [?:?]
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at java.lang.Thread.run(Thread.java:835) [?:?]
+Caused by: com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='mongo', source='admin', password=<hidden>, mechanismProperties={}}
+	at com.mongodb.internal.connection.SaslAuthenticator.wrapException(SaslAuthenticator.java:173) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.access$300(SaslAuthenticator.java:40) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator$1.run(SaslAuthenticator.java:70) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator$1.run(SaslAuthenticator.java:47) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.doAsSubject(SaslAuthenticator.java:179) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.authenticate(SaslAuthenticator.java:47) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.authenticateAll(InternalStreamConnectionInitializer.java:151) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.initialize(InternalStreamConnectionInitializer.java:64) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:127) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.UsageTrackingInternalConnection.open(UsageTrackingInternalConnection.java:50) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.open(DefaultConnectionPool.java:390) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:106) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:92) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultServer.getConnection(DefaultServer.java:85) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.binding.ClusterBinding$ClusterBindingConnectionSource.getConnection(ClusterBinding.java:114) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:211) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:205) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:115) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:108) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandReadOperation.execute(CommandReadOperation.java:55) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:179) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.executeCommand(MongoDatabaseImpl.java:182) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:151) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:146) ~[mongo-java-driver-3.8.2.jar:?]
+	at org.springframework.data.mongodb.core.MongoTemplate$2.doInDB(MongoTemplate.java:437) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate$2.doInDB(MongoTemplate.java:435) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:518) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	... 36 more
+Caused by: com.mongodb.MongoCommandException: Command failed with error 18 (AuthenticationFailed): 'Authentication failed.' on server localhost:27017. The full response is { "ok" : 0.0, "errmsg" : "Authentication failed.", "code" : 18, "codeName" : "AuthenticationFailed" }
+	at com.mongodb.internal.connection.ProtocolHelper.getCommandFailureException(ProtocolHelper.java:179) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:293) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:255) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:83) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:33) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.sendSaslStart(SaslAuthenticator.java:130) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.access$100(SaslAuthenticator.java:40) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator$1.run(SaslAuthenticator.java:54) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator$1.run(SaslAuthenticator.java:47) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.doAsSubject(SaslAuthenticator.java:179) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.authenticate(SaslAuthenticator.java:47) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.authenticateAll(InternalStreamConnectionInitializer.java:151) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.initialize(InternalStreamConnectionInitializer.java:64) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:127) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.UsageTrackingInternalConnection.open(UsageTrackingInternalConnection.java:50) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.open(DefaultConnectionPool.java:390) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:106) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:92) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultServer.getConnection(DefaultServer.java:85) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.binding.ClusterBinding$ClusterBindingConnectionSource.getConnection(ClusterBinding.java:114) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:211) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:205) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:115) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:108) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandReadOperation.execute(CommandReadOperation.java:55) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:179) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.executeCommand(MongoDatabaseImpl.java:182) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:151) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:146) ~[mongo-java-driver-3.8.2.jar:?]
+	at org.springframework.data.mongodb.core.MongoTemplate$2.doInDB(MongoTemplate.java:437) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate$2.doInDB(MongoTemplate.java:435) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:518) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	... 36 more
+logdate=(2020-02-01T21:02:03,654) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table invoice drop constraint FKa3yvl1brgwhdutn120fkdiyaa)
+logdate=(2020-02-01T21:02:03,678) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table item drop constraint FK2n9w8d0dp4bsfra9dcg0046l4)
+logdate=(2020-02-01T21:02:03,684) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices drop constraint FK9qorudwphu6pllhd3nexfxhb0)
+logdate=(2020-02-01T21:02:03,687) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices drop constraint FKg1hesefdb717jo6ena1wxuaab)
+logdate=(2020-02-01T21:02:03,691) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state drop constraint FK4sha6q25nqd3pt913d1u065hb)
+logdate=(2020-02-01T21:02:03,695) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states drop constraint FK90tcsxt8a6428rp30wc7pn21q)
+logdate=(2020-02-01T21:02:03,698) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states drop constraint FKq7vi52iwkygiqh6omubl3legu)
+logdate=(2020-02-01T21:02:03,701) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles drop constraint FKh8ciramu9cc9q3qcqiv4ue8a6)
+logdate=(2020-02-01T21:02:03,704) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles drop constraint FKhfh9dx7w3ubf1co1vdev94g3f)
+logdate=(2020-02-01T21:02:03,708) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists category cascade)
+logdate=(2020-02-01T21:02:03,713) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists company cascade)
+logdate=(2020-02-01T21:02:03,717) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists department cascade)
+logdate=(2020-02-01T21:02:03,722) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists holding cascade)
+logdate=(2020-02-01T21:02:03,727) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists invoice cascade)
+logdate=(2020-02-01T21:02:03,731) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists item cascade)
+logdate=(2020-02-01T21:02:03,736) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists items_invoices cascade)
+logdate=(2020-02-01T21:02:03,740) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists roles cascade)
+logdate=(2020-02-01T21:02:03,754) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists state cascade)
+logdate=(2020-02-01T21:02:03,759) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists state_next_states cascade)
+logdate=(2020-02-01T21:02:03,764) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists user_roles cascade)
+logdate=(2020-02-01T21:02:03,768) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists users cascade)
+logdate=(2020-02-01T21:02:03,775) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table category (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(255), sub_category bytea, primary key (id)))
+logdate=(2020-02-01T21:02:03,789) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table company (id  bigserial not null, created_at timestamp, updated_at timestamp, email varchar(255), extra_data varchar(255), holding bytea, manager bytea, name varchar(255), primary_address bytea, primary_phone varchar(255), secondary_address bytea, seq int8 not null, primary key (id)))
+logdate=(2020-02-01T21:02:03,802) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table department (id  bigserial not null, created_at timestamp, updated_at timestamp, company bytea, mananger bytea, name varchar(255), seq int8 not null, primary key (id)))
+logdate=(2020-02-01T21:02:03,812) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table holding (id  bigserial not null, created_at timestamp, updated_at timestamp, mananger bytea, name varchar(255), seq int8 not null, primary key (id)))
+logdate=(2020-02-01T21:02:03,822) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table invoice (id  bigserial not null, created_at timestamp, updated_at timestamp, comments varchar(255), description varchar(255), customer_id int8, primary key (id)))
+logdate=(2020-02-01T21:02:03,834) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table item (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(255), picture varchar(255), price float8 check (price>=1), quality float8 check (quality>=0), category_id int8, primary key (id)))
+logdate=(2020-02-01T21:02:03,872) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table items_invoices (id  bigserial not null, created_at timestamp, updated_at timestamp, price float8, tax float8, invoice_id int8, item_id int8, primary key (id)))
+logdate=(2020-02-01T21:02:03,890) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table roles (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(20), primary key (id)))
+logdate=(2020-02-01T21:02:03,900) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table state (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(255), send_emil_to_admin boolean, send_emil_to_client boolean, send_emil_to_client_user boolean, send_emil_to_staff boolean, sequence int4, current_state_id int8, primary key (id)))
+logdate=(2020-02-01T21:02:03,908) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table state_next_states (state_id int8 not null, next_states_id int8 not null, primary key (state_id, next_states_id)))
+logdate=(2020-02-01T21:02:03,916) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table user_roles (user_id int8 not null, role_id int8 not null))
+logdate=(2020-02-01T21:02:03,919) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table users (id  bigserial not null, created_at timestamp, updated_at timestamp, email varchar(255), enabled boolean, first_name varchar(255), last_name varchar(255), password varchar(60), reset_token varchar(255), username varchar(255), primary key (id)))
+logdate=(2020-02-01T21:02:03,931) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table category add constraint UK_46ccwnsi9409t36lurvtyljak unique (name))
+logdate=(2020-02-01T21:02:03,938) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table roles add constraint UK_ofx66keruapi6vyqpv6f2or37 unique (name))
+logdate=(2020-02-01T21:02:03,946) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states add constraint UK_n60xp5q9s5d44dfmt6ussv86n unique (next_states_id))
+logdate=(2020-02-01T21:02:03,953) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles add constraint UKa9dydk3dj4qb8cvmjijqnrg5t unique (user_id, role_id))
+logdate=(2020-02-01T21:02:03,961) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email))
+logdate=(2020-02-01T21:02:03,968) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table invoice add constraint FKa3yvl1brgwhdutn120fkdiyaa foreign key (customer_id) references users)
+logdate=(2020-02-01T21:02:03,973) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table item add constraint FK2n9w8d0dp4bsfra9dcg0046l4 foreign key (category_id) references category)
+logdate=(2020-02-01T21:02:03,978) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices add constraint FK9qorudwphu6pllhd3nexfxhb0 foreign key (invoice_id) references invoice)
+logdate=(2020-02-01T21:02:03,982) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices add constraint FKg1hesefdb717jo6ena1wxuaab foreign key (item_id) references item)
+logdate=(2020-02-01T21:02:03,986) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state add constraint FK4sha6q25nqd3pt913d1u065hb foreign key (current_state_id) references state)
+logdate=(2020-02-01T21:02:03,990) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states add constraint FK90tcsxt8a6428rp30wc7pn21q foreign key (next_states_id) references state)
+logdate=(2020-02-01T21:02:03,995) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states add constraint FKq7vi52iwkygiqh6omubl3legu foreign key (state_id) references state)
+logdate=(2020-02-01T21:02:03,999) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles)
+logdate=(2020-02-01T21:02:04,003) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users)
+logdate=(2020-02-01T21:02:05,275) thread=(main)) level=(WARN) loggerclass=(org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration)
+            message=(spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning)
+logdate=(2020-02-01T21:02:07,519) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into roles (created_at, updated_at, name) values (?, ?, ?))
+logdate=(2020-02-01T21:02:07,534) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into roles (created_at, updated_at, name) values (?, ?, ?))
+logdate=(2020-02-01T21:02:07,637) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select role0_.id as id1_7_, role0_.created_at as created_2_7_, role0_.updated_at as updated_3_7_, role0_.name as name4_7_ from roles role0_)
+logdate=(2020-02-01T21:02:07,654) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into users (created_at, updated_at, email, enabled, first_name, last_name, password, reset_token, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,672) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into category (created_at, updated_at, name, sub_category) values (?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,688) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:02:07,695) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,698) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:02:07,700) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,703) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:02:07,705) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,708) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:02:07,710) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,713) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:02:07,715) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,718) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:02:07,721) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,724) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:02:07,727) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,730) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:02:07,732) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,735) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:02:07,738) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,747) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into state (created_at, updated_at, current_state_id, name, send_emil_to_admin, send_emil_to_client, send_emil_to_client_user, send_emil_to_staff, sequence) values (?, ?, ?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,751) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into state (created_at, updated_at, current_state_id, name, send_emil_to_admin, send_emil_to_client, send_emil_to_client_user, send_emil_to_staff, sequence) values (?, ?, ?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:02:07,761) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into user_roles (user_id, role_id) values (?, ?))
+logdate=(2020-02-01T21:02:07,764) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into user_roles (user_id, role_id) values (?, ?))
+logdate=(2020-02-01T21:02:07,766) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into state_next_states (state_id, next_states_id) values (?, ?))
+logdate=(2020-02-01T21:02:08,479) thread=(RMI TCP Connection(4)-169.254.195.124)) level=(WARN) loggerclass=(org.springframework.boot.actuate.mongo.MongoHealthIndicator)
+            message=(MongoDB health check failed)
+org.springframework.data.mongodb.UncategorizedMongoDbException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='mongo', source='mongo', password=<hidden>, mechanismProperties={}}; nested exception is com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='mongo', source='mongo', password=<hidden>, mechanismProperties={}}
+	at org.springframework.data.mongodb.core.MongoExceptionTranslator.translateExceptionIfPossible(MongoExceptionTranslator.java:138) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate.potentiallyConvertRuntimeException(MongoTemplate.java:2781) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:520) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate.executeCommand(MongoTemplate.java:435) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.boot.actuate.mongo.MongoHealthIndicator.doHealthCheck(MongoHealthIndicator.java:46) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.health.AbstractHealthIndicator.health(AbstractHealthIndicator.java:84) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.health.CompositeHealthIndicator.health(CompositeHealthIndicator.java:98) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpoint.health(HealthEndpoint.java:50) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:567) ~[?:?]
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282) ~[spring-core-5.1.6.RELEASE.jar:5.1.6.RELEASE]
+	at org.springframework.boot.actuate.endpoint.invoke.reflect.ReflectiveOperationInvoker.invoke(ReflectiveOperationInvoker.java:76) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.endpoint.annotation.AbstractDiscoveredOperation.invoke(AbstractDiscoveredOperation.java:61) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.endpoint.jmx.EndpointMBean.invoke(EndpointMBean.java:126) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.boot.actuate.endpoint.jmx.EndpointMBean.invoke(EndpointMBean.java:99) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809) ~[?:?]
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801) ~[?:?]
+	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1466) ~[?:?]
+	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1307) ~[?:?]
+	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1399) ~[?:?]
+	at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:827) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:567) ~[?:?]
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359) ~[?:?]
+	at sun.rmi.transport.Transport$1.run(Transport.java:200) ~[?:?]
+	at sun.rmi.transport.Transport$1.run(Transport.java:197) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:689) [?:?]
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:196) ~[?:?]
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562) ~[?:?]
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796) ~[?:?]
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:389) [?:?]
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at java.lang.Thread.run(Thread.java:835) [?:?]
+Caused by: com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='mongo', source='mongo', password=<hidden>, mechanismProperties={}}
+	at com.mongodb.internal.connection.SaslAuthenticator.wrapException(SaslAuthenticator.java:173) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.access$300(SaslAuthenticator.java:40) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator$1.run(SaslAuthenticator.java:70) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator$1.run(SaslAuthenticator.java:47) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.doAsSubject(SaslAuthenticator.java:179) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.authenticate(SaslAuthenticator.java:47) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.authenticateAll(InternalStreamConnectionInitializer.java:151) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.initialize(InternalStreamConnectionInitializer.java:64) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:127) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.UsageTrackingInternalConnection.open(UsageTrackingInternalConnection.java:50) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.open(DefaultConnectionPool.java:390) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:106) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:92) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultServer.getConnection(DefaultServer.java:85) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.binding.ClusterBinding$ClusterBindingConnectionSource.getConnection(ClusterBinding.java:114) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:211) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:205) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:115) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:108) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandReadOperation.execute(CommandReadOperation.java:55) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:179) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.executeCommand(MongoDatabaseImpl.java:182) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:151) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:146) ~[mongo-java-driver-3.8.2.jar:?]
+	at org.springframework.data.mongodb.core.MongoTemplate$2.doInDB(MongoTemplate.java:437) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate$2.doInDB(MongoTemplate.java:435) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:518) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	... 37 more
+Caused by: com.mongodb.MongoCommandException: Command failed with error 18 (AuthenticationFailed): 'Authentication failed.' on server localhost:27017. The full response is { "ok" : 0.0, "errmsg" : "Authentication failed.", "code" : 18, "codeName" : "AuthenticationFailed" }
+	at com.mongodb.internal.connection.ProtocolHelper.getCommandFailureException(ProtocolHelper.java:179) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:293) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:255) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:83) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:33) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.sendSaslStart(SaslAuthenticator.java:130) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.access$100(SaslAuthenticator.java:40) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator$1.run(SaslAuthenticator.java:54) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator$1.run(SaslAuthenticator.java:47) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.doAsSubject(SaslAuthenticator.java:179) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.SaslAuthenticator.authenticate(SaslAuthenticator.java:47) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.authenticateAll(InternalStreamConnectionInitializer.java:151) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.initialize(InternalStreamConnectionInitializer.java:64) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:127) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.UsageTrackingInternalConnection.open(UsageTrackingInternalConnection.java:50) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.open(DefaultConnectionPool.java:390) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:106) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:92) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.internal.connection.DefaultServer.getConnection(DefaultServer.java:85) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.binding.ClusterBinding$ClusterBindingConnectionSource.getConnection(ClusterBinding.java:114) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:211) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:205) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:115) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandOperationHelper.executeWrappedCommandProtocol(CommandOperationHelper.java:108) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.operation.CommandReadOperation.execute(CommandReadOperation.java:55) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:179) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.executeCommand(MongoDatabaseImpl.java:182) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:151) ~[mongo-java-driver-3.8.2.jar:?]
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:146) ~[mongo-java-driver-3.8.2.jar:?]
+	at org.springframework.data.mongodb.core.MongoTemplate$2.doInDB(MongoTemplate.java:437) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate$2.doInDB(MongoTemplate.java:435) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	at org.springframework.data.mongodb.core.MongoTemplate.execute(MongoTemplate.java:518) ~[spring-data-mongodb-2.1.8.RELEASE.jar:2.1.8.RELEASE]
+	... 37 more
+logdate=(2020-02-01T21:07:08,328) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table invoice drop constraint FKa3yvl1brgwhdutn120fkdiyaa)
+logdate=(2020-02-01T21:07:08,355) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table item drop constraint FK2n9w8d0dp4bsfra9dcg0046l4)
+logdate=(2020-02-01T21:07:08,369) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices drop constraint FK9qorudwphu6pllhd3nexfxhb0)
+logdate=(2020-02-01T21:07:08,373) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices drop constraint FKg1hesefdb717jo6ena1wxuaab)
+logdate=(2020-02-01T21:07:08,378) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state drop constraint FK4sha6q25nqd3pt913d1u065hb)
+logdate=(2020-02-01T21:07:08,382) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states drop constraint FK90tcsxt8a6428rp30wc7pn21q)
+logdate=(2020-02-01T21:07:08,386) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states drop constraint FKq7vi52iwkygiqh6omubl3legu)
+logdate=(2020-02-01T21:07:08,390) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles drop constraint FKh8ciramu9cc9q3qcqiv4ue8a6)
+logdate=(2020-02-01T21:07:08,394) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles drop constraint FKhfh9dx7w3ubf1co1vdev94g3f)
+logdate=(2020-02-01T21:07:08,397) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists category cascade)
+logdate=(2020-02-01T21:07:08,402) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists company cascade)
+logdate=(2020-02-01T21:07:08,407) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists department cascade)
+logdate=(2020-02-01T21:07:08,411) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists holding cascade)
+logdate=(2020-02-01T21:07:08,422) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists invoice cascade)
+logdate=(2020-02-01T21:07:08,427) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists item cascade)
+logdate=(2020-02-01T21:07:08,433) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists items_invoices cascade)
+logdate=(2020-02-01T21:07:08,438) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists roles cascade)
+logdate=(2020-02-01T21:07:08,443) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists state cascade)
+logdate=(2020-02-01T21:07:08,448) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists state_next_states cascade)
+logdate=(2020-02-01T21:07:08,451) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists user_roles cascade)
+logdate=(2020-02-01T21:07:08,455) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(drop table if exists users cascade)
+logdate=(2020-02-01T21:07:08,463) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table category (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(255), sub_category bytea, primary key (id)))
+logdate=(2020-02-01T21:07:08,474) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table company (id  bigserial not null, created_at timestamp, updated_at timestamp, email varchar(255), extra_data varchar(255), holding bytea, manager bytea, name varchar(255), primary_address bytea, primary_phone varchar(255), secondary_address bytea, seq int8 not null, primary key (id)))
+logdate=(2020-02-01T21:07:08,486) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table department (id  bigserial not null, created_at timestamp, updated_at timestamp, company bytea, mananger bytea, name varchar(255), seq int8 not null, primary key (id)))
+logdate=(2020-02-01T21:07:08,498) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table holding (id  bigserial not null, created_at timestamp, updated_at timestamp, mananger bytea, name varchar(255), seq int8 not null, primary key (id)))
+logdate=(2020-02-01T21:07:08,508) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table invoice (id  bigserial not null, created_at timestamp, updated_at timestamp, comments varchar(255), description varchar(255), customer_id int8, primary key (id)))
+logdate=(2020-02-01T21:07:08,519) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table item (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(255), picture varchar(255), price float8 check (price>=1), quality float8 check (quality>=0), category_id int8, primary key (id)))
+logdate=(2020-02-01T21:07:08,530) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table items_invoices (id  bigserial not null, created_at timestamp, updated_at timestamp, price float8, tax float8, invoice_id int8, item_id int8, primary key (id)))
+logdate=(2020-02-01T21:07:08,537) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table roles (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(20), primary key (id)))
+logdate=(2020-02-01T21:07:08,545) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table state (id  bigserial not null, created_at timestamp, updated_at timestamp, name varchar(255), send_emil_to_admin boolean, send_emil_to_client boolean, send_emil_to_client_user boolean, send_emil_to_staff boolean, sequence int4, current_state_id int8, primary key (id)))
+logdate=(2020-02-01T21:07:08,560) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table state_next_states (state_id int8 not null, next_states_id int8 not null, primary key (state_id, next_states_id)))
+logdate=(2020-02-01T21:07:08,567) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table user_roles (user_id int8 not null, role_id int8 not null))
+logdate=(2020-02-01T21:07:08,571) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(create table users (id  bigserial not null, created_at timestamp, updated_at timestamp, email varchar(255), enabled boolean, first_name varchar(255), last_name varchar(255), password varchar(60), reset_token varchar(255), username varchar(255), primary key (id)))
+logdate=(2020-02-01T21:07:08,583) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table category add constraint UK_46ccwnsi9409t36lurvtyljak unique (name))
+logdate=(2020-02-01T21:07:08,590) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table roles add constraint UK_ofx66keruapi6vyqpv6f2or37 unique (name))
+logdate=(2020-02-01T21:07:08,597) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states add constraint UK_n60xp5q9s5d44dfmt6ussv86n unique (next_states_id))
+logdate=(2020-02-01T21:07:08,603) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles add constraint UKa9dydk3dj4qb8cvmjijqnrg5t unique (user_id, role_id))
+logdate=(2020-02-01T21:07:08,610) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email))
+logdate=(2020-02-01T21:07:08,626) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table invoice add constraint FKa3yvl1brgwhdutn120fkdiyaa foreign key (customer_id) references users)
+logdate=(2020-02-01T21:07:08,630) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table item add constraint FK2n9w8d0dp4bsfra9dcg0046l4 foreign key (category_id) references category)
+logdate=(2020-02-01T21:07:08,634) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices add constraint FK9qorudwphu6pllhd3nexfxhb0 foreign key (invoice_id) references invoice)
+logdate=(2020-02-01T21:07:08,638) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table items_invoices add constraint FKg1hesefdb717jo6ena1wxuaab foreign key (item_id) references item)
+logdate=(2020-02-01T21:07:08,643) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state add constraint FK4sha6q25nqd3pt913d1u065hb foreign key (current_state_id) references state)
+logdate=(2020-02-01T21:07:08,647) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states add constraint FK90tcsxt8a6428rp30wc7pn21q foreign key (next_states_id) references state)
+logdate=(2020-02-01T21:07:08,652) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table state_next_states add constraint FKq7vi52iwkygiqh6omubl3legu foreign key (state_id) references state)
+logdate=(2020-02-01T21:07:08,656) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles)
+logdate=(2020-02-01T21:07:08,660) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(alter table user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users)
+logdate=(2020-02-01T21:07:10,337) thread=(main)) level=(WARN) loggerclass=(org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration)
+            message=(spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning)
+logdate=(2020-02-01T21:07:13,563) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into roles (created_at, updated_at, name) values (?, ?, ?))
+logdate=(2020-02-01T21:07:13,585) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into roles (created_at, updated_at, name) values (?, ?, ?))
+logdate=(2020-02-01T21:07:13,716) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select role0_.id as id1_7_, role0_.created_at as created_2_7_, role0_.updated_at as updated_3_7_, role0_.name as name4_7_ from roles role0_)
+logdate=(2020-02-01T21:07:13,740) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into users (created_at, updated_at, email, enabled, first_name, last_name, password, reset_token, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,777) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into category (created_at, updated_at, name, sub_category) values (?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,800) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:07:13,811) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,815) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:07:13,819) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,823) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:07:13,828) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,832) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:07:13,836) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,842) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:07:13,848) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,852) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:07:13,857) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,863) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:07:13,867) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,871) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:07:13,876) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,882) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(select item0_.id as id1_5_0_, item0_.created_at as created_2_5_0_, item0_.updated_at as updated_3_5_0_, item0_.category_id as category8_5_0_, item0_.name as name4_5_0_, item0_.picture as picture5_5_0_, item0_.price as price6_5_0_, item0_.quality as quality7_5_0_ from item item0_ where item0_.id=?)
+logdate=(2020-02-01T21:07:13,885) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into item (created_at, updated_at, category_id, name, picture, price, quality) values (?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,898) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into state (created_at, updated_at, current_state_id, name, send_emil_to_admin, send_emil_to_client, send_emil_to_client_user, send_emil_to_staff, sequence) values (?, ?, ?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,903) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into state (created_at, updated_at, current_state_id, name, send_emil_to_admin, send_emil_to_client, send_emil_to_client_user, send_emil_to_staff, sequence) values (?, ?, ?, ?, ?, ?, ?, ?, ?))
+logdate=(2020-02-01T21:07:13,920) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into user_roles (user_id, role_id) values (?, ?))
+logdate=(2020-02-01T21:07:13,925) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into user_roles (user_id, role_id) values (?, ?))
+logdate=(2020-02-01T21:07:13,928) thread=(main)) level=(DEBUG) loggerclass=(org.hibernate.SQL)
+            message=(insert into state_next_states (state_id, next_states_id) values (?, ?))

@@ -3,7 +3,9 @@
 
     <Properties>
         <Property name="filename">spring-boot.log</Property>
-        <Property name="defaultpattern">logdate=(%d{ISO8601}) thread=(%thread)) level=(%level) loggerclass=(%logger{36}) message=(%msg)%n</Property>
+        <Property name="defaultpattern">logdate=(%d{ISO8601}) thread=(%thread)) level=(%level) loggerclass=(%logger{36})
+            message=(%msg)%n
+        </Property>
     </Properties>
     <Filter type="ThresholdFilter" level="trace"/>
 
@@ -12,10 +14,10 @@
             <Layout type="PatternLayout" pattern="${defaultpattern}"/>
         </Appender>
         <Appender type="File" name="File" fileName="${filename}">
-            <Layout type="PatternLayout" pattern="${defaultpattern}" />
+            <Layout type="PatternLayout" pattern="${defaultpattern}"/>
         </Appender>
         <Socket name="socket" host="localhost" port="9999" reconnectionDelayMillis="5000">
-            <Layout type="PatternLayout" pattern="${defaultpattern}" />
+            <Layout type="PatternLayout" pattern="${defaultpattern}"/>
         </Socket>
     </Appenders>
 
