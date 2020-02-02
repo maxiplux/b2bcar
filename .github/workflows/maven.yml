@@ -18,7 +18,13 @@ jobs:
       with:
         java-version: 12
         postgresql version: '11'
-
+    - uses: azure/docker-login@v1
+    - name: Docker Login
+      uses: azure/docker-login@v1
+      with:
+        login-server: index.docker.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
     - name: cleam
       run: mvn clean  --file pom.xml
     - name: test
@@ -33,7 +39,3 @@ jobs:
       run: mvn boost:docker-build --file pom.xml
     - name: docker-push
       run: mvn boost:docker-push --file pom.xml
-
-
-    
-          
