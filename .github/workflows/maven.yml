@@ -38,7 +38,7 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - run: |
-        docker build . -t maxiplux/b2bcart-backend:${{ github.sha }}
+        docker build . -t maxiplux/b2bcart-backend
 
     - name: Docker Push
       uses: azure/docker-login@v1
