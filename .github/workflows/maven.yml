@@ -19,12 +19,7 @@ jobs:
         java-version: 12
         postgresql version: '11'
 
-    - name: Docker Login
-      uses: azure/docker-login@v1
-      with:
-        login-server: index.docker.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}
+
     - name: cleam
       run: mvn clean  --file pom.xml
     - name: test
@@ -35,6 +30,16 @@ jobs:
       run: mvn test   --file pom.xml
     - name: package
       run: mvn package --file pom.xml
+    - name: Docker Login
+      uses: azure/docker-login@v1
+      with:
+        login-server: index.docker.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - run: |
+        docker build . -t maxiplux/b2bcart-backend:${{ github.sha }}
+        docker push contoso.azurecr.io/k8sdemo:${{ github.sha }}
     #- name: docker-build
     #  run: mvn boost:docker-build --file pom.xml
     #- name: docker-push
