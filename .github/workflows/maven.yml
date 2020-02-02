@@ -18,14 +18,11 @@ jobs:
       with:
         java-version: 12
         postgresql version: '11'
-
-
-    - name: Docker Login
-    - run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}
-
-
     - name: cleam
       run: mvn clean  --file pom.xml
+      
+    - name: Docker Login
+    - run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}      
     - name: test
       env:
         DB: localhost
