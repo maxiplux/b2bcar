@@ -38,7 +38,7 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - run: |
-        docker build . -t maxiplux/b2bcart-backend
+        docker build . -t index.docker.io/maxiplux/b2bcart-backend
 
     - name: Docker Push
       uses: azure/docker-login@v1
@@ -48,7 +48,7 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - run: |
-        docker push maxiplux/b2bcart-backend 
+        docker push index.docker.io/maxiplux/b2bcart-backend
     #- name: docker-build
     #  run: mvn boost:docker-build --file pom.xml
     #- name: docker-push
