@@ -36,6 +36,5 @@ jobs:
         login-server: index.docker.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
-    - run: |
-          mvn boost:docker-push --file pom.xml
+    - run: mvn boost:docker-push --file pom.xml
           
