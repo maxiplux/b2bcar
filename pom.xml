@@ -314,6 +314,24 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>io.openliberty.boost</groupId>
+                <artifactId>boost-maven-plugin</artifactId>
+                <version>0.1.2</version>
+                <configuration>
+                    <repository>maxiplux/b2bcart-backend</repository>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>docker-build</goal>
+                            <goal>docker-push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
         </plugins>
     </build>
 

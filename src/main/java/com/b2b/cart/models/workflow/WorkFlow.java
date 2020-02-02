@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -18,7 +17,7 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-@Document
+//@Document
 public class WorkFlow extends AuditModel {
 
     @Id

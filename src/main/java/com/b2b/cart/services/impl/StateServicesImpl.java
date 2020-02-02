@@ -33,8 +33,8 @@ public class StateServicesImpl extends CrudServicesImpl<State> implements StateS
                 currentProduct.setName(element.getName());
             }
 
-            if (element.getOrder() != null) {
-                currentProduct.setOrder(element.getOrder());
+            if (element.getSequence() != null) {
+                currentProduct.setSequence(element.getSequence());
             }
 
             if (element.getSendEmilToAdmin() != null) {

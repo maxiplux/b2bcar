@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -22,13 +23,22 @@ public class State extends AuditModel {
     private String name;
 
 
-    private Integer order;
+    private Integer sequence;
 
-    @JoinTable(name = "states_rules", joinColumns = {
-            @JoinColumn(name = "current", referencedColumnName = "id", nullable = false)}, inverseJoinColumns = {
-            @JoinColumn(name = "next", referencedColumnName = "id", nullable = false)})
-    @ManyToMany
-    private Set<State> nextStates;
+
+    @OneToMany
+    private Set<State> nextStates = new HashSet<State>();
+
+    @OneToOne
+    private State currentState;
+
+
+    public void addState(State state) {
+        if (this.nextStates == null) {
+            this.nextStates = new HashSet<State>();
+        }
+        this.nextStates.add(state);
+    }
 
     private Boolean sendEmilToAdmin;
     private Boolean sendEmilToClient;

@@ -1,17 +1,22 @@
 version: '3.3'
 services:
-  #  web:
-  #    build: .
-  #    container_name: apipostgress
-  #    volumes:
-  #    - ./composeexample:/code
-  #    ports:
-  #    - "8080:8080"
-  #    links:
-  #    - postgres
-  #
-  #    depends_on:
-  #    - postgres
+  web:
+    image: maxiplux/b2bcart-backend
+    container_name: b2bcart-backend
+    environment:
+      MONGO: mongo
+      REDIS: redis
+      DB: postgres
+    ports:
+      - "8080:8080"
+    links:
+      - postgres
+      - mongo
+      - redis
+    depends_on:
+      - postgres
+      - mongo
+      - redis
 
 
   postgres:
@@ -22,24 +27,22 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
-  b2bcart-redis:
+  redis:
     image: redis:5.0.7
     ports:
       - '6379:6379'
-  b2bcart-sonar:
-    image: sonarqube:7.9.1-community
-    ports:
-      - 9001:9000
-      - 9092:9092
+  #  b2bcart-sonar:
+  #    image: sonarqube:7.9.1-community
+  #    ports:
+  #      - 9001:9000
+  #      - 9092:9092
   mongo:
-    image: mongo
+    image: mongo:3.4.1
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: mongo
     ports:
       - "27017:27017"
-    volumes:
-      - ./data/db:/data/db
 volumes:
   dbdata:
 # this compomse no has it https://thepracticaldeveloper.com/2017/12/11/dockerize-spring-boot/ , but  that exmaple is beautiful because implements scale

@@ -2,13 +2,11 @@ package com.b2b.cart.config;
 
 import com.b2b.cart.models.items.Category;
 import com.b2b.cart.models.items.Item;
+import com.b2b.cart.models.rules.State;
 import com.b2b.cart.models.users.Role;
 import com.b2b.cart.models.users.RoleName;
 import com.b2b.cart.models.users.User;
-import com.b2b.cart.repository.CategoryRepository;
-import com.b2b.cart.repository.ItemRepository;
-import com.b2b.cart.repository.RoleRepository;
-import com.b2b.cart.repository.UserRepository;
+import com.b2b.cart.repository.*;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +41,10 @@ public class DataLoader implements ApplicationRunner {
 
 
     @Autowired
+    private StateRepository stateRepository;
+
+
+    @Autowired
     private ItemRepository itemRepository;
 
     private EasyRandom factory;
@@ -54,10 +56,31 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         this.createFactory();
-        // this.createUser();
-        //this.createCategory();
-        //this.createItems();
+        this.createUser();
+        this.createCategory();
+        this.createItems();
+        this.createState();
 
+
+    }
+
+    private void createState() {
+        State state = new State();
+        state.setName("Inicial");
+        state.setSequence(1);
+        state.setSendEmilToClientUser(true);
+        state.setCurrentState(null);
+
+        State enviado_para_approacion = new State();
+        enviado_para_approacion.setName("Enviado Para Aprobacion");
+        enviado_para_approacion.setSequence(2);
+        enviado_para_approacion.setSendEmilToClientUser(true);
+        enviado_para_approacion.setCurrentState(null);
+
+        enviado_para_approacion.addState(state);
+
+        this.stateRepository.save(state);
+        this.stateRepository.save(enviado_para_approacion);
 
     }
 
