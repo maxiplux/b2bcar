@@ -22,7 +22,7 @@ jobs:
       run: mvn clean  --file pom.xml
       
     - name: Docker Login
-    - run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}      
+      run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}      
     - name: test
       env:
         DB: localhost
@@ -34,9 +34,9 @@ jobs:
     - name: Docker Login
     - run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}
     - name: Docker Build
-    - run: docker build . -t index.docker.io/maxiplux/b2bcart-backend
+      run: docker build . -t index.docker.io/maxiplux/b2bcart-backend
     - name: Docker Push
-    - run: docker push index.docker.io/maxiplux/b2bcart-backend
+      run: docker push index.docker.io/maxiplux/b2bcart-backend
     #- name: docker-build
     #  run: mvn boost:docker-build --file pom.xml
     #- name: docker-push
