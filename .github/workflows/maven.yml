@@ -30,13 +30,14 @@ jobs:
       run: mvn package --file pom.xml
     - name: docker-build
       run: mvn boost:docker-build --file pom.xml
-    - name: docker-push
+    - name: docker-login
     - uses: azure/docker-login@v1
       with:
         login-server: index.docker.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
-        run: mvn boost:docker-push --file pom.xml
+    - name: docker-push
+      run: mvn boost:docker-push --file pom.xml
 
     
           
