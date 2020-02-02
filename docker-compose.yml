@@ -3,6 +3,7 @@ services:
   web:
     image: maxiplux/b2bcart-backend
     container_name: b2bcart-backend
+    restart: on-failure
     environment:
       MONGO: mongo
       REDIS: redis
@@ -22,6 +23,7 @@ services:
   postgres:
     image: postgres
     container_name: postgres
+    restart: on-failure
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -29,6 +31,7 @@ services:
       - "5432:5432"
   redis:
     image: redis:5.0.7
+    restart: on-failure
     ports:
       - '6379:6379'
   #  b2bcart-sonar:
@@ -38,6 +41,7 @@ services:
   #      - 9092:9092
   mongo:
     image: mongo:3.4.1
+    restart: on-failure
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: mongo
