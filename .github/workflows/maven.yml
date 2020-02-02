@@ -39,7 +39,7 @@ jobs:
 
     - run: |
         docker build . -t maxiplux/b2bcart-backend:${{ github.sha }}
-        docker push contoso.azurecr.io/k8sdemo:${{ github.sha }}
+        docker push maxiplux/b2bcart-backend:${{ github.sha }}
     #- name: docker-build
     #  run: mvn boost:docker-build --file pom.xml
     #- name: docker-push
