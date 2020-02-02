@@ -90,7 +90,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>20.0</version>
+            <version>24.1.1-android</version>
         </dependency>
 
         <dependency>
@@ -173,7 +173,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-jwt</artifactId>
-            <version>1.0.9.RELEASE</version>
+            <version>1.0.10.RELEASE</version>
         </dependency>
 
         <!-- JDK 9+ -->
