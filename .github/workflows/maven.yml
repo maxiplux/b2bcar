@@ -6,12 +6,29 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    services:
+      postgres:
+        image: postgres:11.5
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@v1
     - name: Set up JDK 12
       uses: actions/setup-java@v1
       with:
         java-version: 12
-    - name: Build with Maven
+        postgresql version: '11'
+    - name: cleam
+      run: mvn clean  --file pom.xml
+    - name: test
+      env:
+        DB: localhost
+        MONGO: localhost
+        
+      run: mvn test   --file pom.xml
+    - name: package
       run: mvn package --file pom.xml
+    - name: docker-build
+      run: mvn boost:docker-build --file pom.xml
+    - name: docker-push
+      run: mvn boost:docker-push --file pom.xml
