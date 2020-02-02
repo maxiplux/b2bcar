@@ -30,7 +30,7 @@ jobs:
       run: mvn test   --file pom.xml
     - name: package
       run: mvn package --file pom.xml
-    - name: Docker Login
+    - name: Docker Build
       uses: azure/docker-login@v1
       with:
         login-server: index.docker.io
@@ -39,7 +39,16 @@ jobs:
 
     - run: |
         docker build . -t maxiplux/b2bcart-backend:${{ github.sha }}
-        docker push maxiplux/b2bcart-backend:${{ github.sha }}
+
+    - name: Docker Push
+      uses: azure/docker-login@v1
+      with:
+        login-server: index.docker.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - run: |
+        docker push maxiplux/b2bcart-backend 
     #- name: docker-build
     #  run: mvn boost:docker-build --file pom.xml
     #- name: docker-push
