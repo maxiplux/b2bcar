@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.b2b.cart.controllers.AuthControllerTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.096 s - in com.b2b.cart.controllers.AuthControllerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.299 s - in com.b2b.cart.controllers.AuthControllerTest

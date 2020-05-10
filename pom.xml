@@ -279,7 +279,15 @@
                     <formats>
                         <format>html</format>
                         <format>xml</format>
+                        <reportSets>
+                            <reportSet>
+                                <reports>
+                                    <report>cobertura</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
                     </formats>
+
                     <check/>
                 </configuration>
             </plugin>
